@@ -1,0 +1,119 @@
+{
+    "name": "Universal Stretch",
+    "workout": [
+        {
+            "name": "Deep squat hold",
+            "rounds": 1,
+            "steps": [
+                {
+                    "type": "timed",
+                    "title": "Hold deep squat",
+                    "detail": "Keep your heels on the ground and chest up.",
+                    "seconds": 45
+                }
+            ]
+        },
+        {
+            "name": "90/90 hip stretch",
+            "rounds": 1,
+            "steps": [
+                {
+                    "type": "timed",
+                    "title": "Hold 90/90 hip stretch left side",
+                    "detail": "Keep your feet flat on the ground and your back straight.",
+                    "seconds": 45
+                },
+                {
+                    "type": "timed",
+                    "title": "Hold 90/90 hip stretch right side",
+                    "detail": "Keep your feet flat on the ground and your back straight.",
+                    "seconds": 45
+                }
+            ]
+        },
+        {
+            "name": "Hip flexor stretch",
+            "rounds": 1,
+            "steps": [
+                {
+                    "type": "timed",
+                    "title": "Hold hip flexor stretch left side",
+                    "detail": "Keep your back straight and hips square.",
+                    "seconds": 45
+                },
+                {
+                    "type": "timed",
+                    "title": "Hold hip flexor stretch right side",
+                    "detail": "Keep your back straight and hips square.",
+                    "seconds": 45
+                }
+            ]
+        },
+        {
+            "name": "Figure 4 stretch",
+            "rounds": 1,
+            "steps": [
+                {
+                    "type": "timed",
+                    "title": "Hold figure 4 stretch left side",
+                    "detail": "Important for stability",
+                    "seconds": 45
+                },
+                {
+                    "type": "timed",
+                    "title": "Hold figure 4 stretch right side",
+                    "detail": "Important for stability",
+                    "seconds": 45
+                }
+            ]
+        },
+        {
+            "name": "Hamstring stretch",
+            "rounds": 1,
+            "steps": [
+                {
+                    "type": "timed",
+                    "title": "Hold hamstring stretch left side",
+                    "detail": "Keep your back straight and hinge at the hips.",
+                    "seconds": 45
+                },
+                {
+                    "type": "timed",
+                    "title": "Hold hamstring stretch right side",
+                    "detail": "Keep your back straight and hinge at the hips.",
+                    "seconds": 45
+                }
+            ]
+        },
+        {
+            "name": "Spinal decompression stretch",
+            "rounds": 1,
+            "steps": [
+                {
+                    "type": "timed",
+                    "title": "Hold spinal decompression stretch",
+                    "detail": "Relax your back and let gravity do the work.",
+                    "seconds": 60
+                }
+            ]
+        },
+        {
+            "name": "Shoulder opener stretch",
+            "rounds": 1,
+            "steps": [
+                {
+                    "type": "timed",
+                    "title": "Hold shoulder opener stretch left side",
+                    "detail": "Keep your arms straight and chest open.",
+                    "seconds": 45
+                },
+                {
+                    "type": "timed",
+                    "title": "Hold shoulder opener stretch right side",
+                    "detail": "Keep your arms straight and chest open.",
+                    "seconds": 45
+                }
+            ]
+        }
+    ]
+}

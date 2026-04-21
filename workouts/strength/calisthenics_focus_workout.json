@@ -1,0 +1,158 @@
+{
+  "name": "Calisthenics + Light Core",
+  "total_rounds": 1,
+  "sound": true,
+  "keep_screen_on": true,
+  "sections": [
+    {
+      "name": "Warmup",
+      "type": "sequence",
+      "exercises": [
+        {
+          "name": "Marching in place with arm swing",
+          "mode": "time",
+          "duration_sec": 70,
+          "description": "Increase rhythm gradually."
+        },
+        {
+          "name": "Hip circles + weight shift",
+          "mode": "time",
+          "duration_sec": 50,
+          "description": "Feel balance from one leg to the other."
+        },
+        {
+          "name": "Deep bodyweight squats (warmup)",
+          "mode": "reps",
+          "repetitions": 14,
+          "wait_for_user": true,
+          "description": "Pause briefly at bottom."
+        },
+        {
+          "name": "Thoracic rotations",
+          "mode": "time",
+          "duration_sec": 45,
+          "description": "Rotate gently. Keep hips stable."
+        }
+      ]
+    },
+    {
+      "name": "Light core",
+      "type": "circuit",
+      "rounds": 2,
+      "rest_between_exercises_sec": 20,
+      "rest_between_rounds_sec": 60,
+      "exercises": [
+        {
+          "name": "Dead bugs",
+          "mode": "reps",
+          "repetitions": 8,
+          "wait_for_user": true,
+          "description": "Slow extension. Keep lower back quiet."
+        },
+        {
+          "name": "Bird dog",
+          "mode": "reps",
+          "repetitions": 10,
+          "wait_for_user": true,
+          "description": "Reach long. Avoid pelvis rotation."
+        },
+        {
+          "name": "Side plank (left)",
+          "mode": "time",
+          "duration_sec": 25,
+          "description": "Light effort. Straight line from shoulder to ankle."
+        },
+        {
+          "name": "Side plank (right)",
+          "mode": "time",
+          "duration_sec": 25,
+          "description": "Stay stacked and steady."
+        },
+        {
+          "name": "Glute bridge",
+          "mode": "reps",
+          "repetitions": 12,
+          "wait_for_user": true,
+          "description": "Slow lift, brief squeeze at the top."
+        }
+      ]
+    },
+    {
+      "name": "Calisthenics",
+      "type": "circuit",
+      "rounds": 4,
+      "rest_between_exercises_sec": 35,
+      "rest_between_rounds_sec": 80,
+      "exercises": [
+        {
+          "name": "Bodyweight squats",
+          "mode": "reps",
+          "repetitions": 20,
+          "wait_for_user": true,
+          "description": "Controlled tempo. Main lower-body workload."
+        },
+        {
+          "name": "Band rows",
+          "mode": "reps",
+          "repetitions": 16,
+          "wait_for_user": true,
+          "description": "Strong pull, slow return."
+        },
+        {
+          "name": "Frontal plank",
+          "mode": "time",
+          "duration_sec": 40,
+          "description": "Supportive hold. Stop before form breaks."
+        }
+      ]
+    },
+    {
+      "name": "Final stretching",
+      "type": "sequence",
+      "exercises": [
+        {
+          "name": "Hip flexor stretch (left)",
+          "mode": "time",
+          "duration_sec": 30,
+          "description": "Posterior tilt."
+        },
+        {
+          "name": "Hip flexor stretch (right)",
+          "mode": "time",
+          "duration_sec": 30,
+          "description": "Relax neck."
+        },
+        {
+          "name": "Figure-4 stretch (left)",
+          "mode": "time",
+          "duration_sec": 30,
+          "description": "Gentle pull."
+        },
+        {
+          "name": "Figure-4 stretch (right)",
+          "mode": "time",
+          "duration_sec": 30,
+          "description": "Slow breathing."
+        },
+        {
+          "name": "Child pose",
+          "mode": "time",
+          "duration_sec": 40,
+          "description": "Let trunk relax."
+        },
+        {
+          "name": "Supine twist (left)",
+          "mode": "time",
+          "duration_sec": 30,
+          "description": "Release core."
+        },
+        {
+          "name": "Supine twist (right)",
+          "mode": "time",
+          "duration_sec": 30,
+          "description": "Heavy shoulders."
+        }
+      ]
+    }
+  ]
+}

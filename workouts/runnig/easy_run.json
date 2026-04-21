@@ -1,0 +1,41 @@
+{
+    "name": "Easy Run",
+    "workout": [
+        {
+            "name": "Warm up",
+            "rounds": 1,
+            "steps": [
+                {
+                    "type": "timed",
+                    "title": "Warm up",
+                    "detail": "Jog at a slow pace for 5 minutes.",
+                    "minutes": 5
+                }
+            ]
+        },
+        {
+            "name": "Main run",
+            "rounds": 1,
+            "steps": [
+                {
+                    "type": "timed",
+                    "title": "Easy run",
+                    "detail": "Run at a comfortable pace for 20 minutes.",
+                    "minutes": 20
+                }
+            ]
+        },
+        {
+            "name": "Cool down",
+            "rounds": 1,
+            "steps": [
+                {
+                    "type": "timed",
+                    "title": "Cool down",
+                    "detail": "Walk at a slow pace for 5 minutes.",
+                    "minutes": 5
+                }
+            ]
+        }
+    ]
+}

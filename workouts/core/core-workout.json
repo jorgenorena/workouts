@@ -1,0 +1,210 @@
+{
+  "name": "Core + Light Calisthenics V1",
+  "total_rounds": 1,
+  "sound": true,
+  "keep_screen_on": true,
+
+  "sections": [
+
+    {
+      "name": "Warmup",
+      "type": "sequence",
+      "exercises": [
+
+        {
+          "name": "Marching in place",
+          "mode": "time",
+          "duration_sec": 60,
+          "description": "Increase heart rate gradually."
+        },
+
+        {
+          "name": "Arm circles",
+          "mode": "time",
+          "duration_sec": 40,
+          "description": "Small → large circles."
+        },
+
+        {
+          "name": "Hip rotations",
+          "mode": "time",
+          "duration_sec": 40,
+          "description": "Slow controlled motion."
+        },
+
+        {
+          "name": "Bodyweight squats (warmup)",
+          "mode": "reps",
+          "repetitions": 12,
+          "wait_for_user": true,
+          "description": "Comfortable depth."
+        },
+
+        {
+          "name": "Torso twists",
+          "mode": "time",
+          "duration_sec": 40,
+          "description": "Relaxed rotation."
+        }
+
+      ]
+    },
+
+    {
+      "name": "Light calisthenics",
+      "type": "circuit",
+      "rounds": 2,
+      "rest_between_exercises_sec": 30,
+      "rest_between_rounds_sec": 90,
+
+      "exercises": [
+
+        {
+          "name": "Bodyweight squats",
+          "mode": "reps",
+          "repetitions": 15,
+          "wait_for_user": true,
+          "description": "Smooth descent."
+        },
+
+        {
+          "name": "Band rows",
+          "mode": "reps",
+          "repetitions": 12,
+          "wait_for_user": true,
+          "description": "Chest open, slow return."
+        },
+
+        {
+          "name": "Frontal plank",
+          "mode": "time",
+          "duration_sec": 40,
+          "description": "Brace core strongly."
+        }
+
+      ]
+    },
+
+    {
+      "name": "Core block",
+      "type": "circuit",
+      "rounds": 3,
+      "rest_between_exercises_sec": 20,
+      "rest_between_rounds_sec": 60,
+
+      "exercises": [
+
+        {
+          "name": "Dead bugs",
+          "mode": "reps",
+          "repetitions": 8,
+          "wait_for_user": true,
+          "description": "Opposite arm-leg extension."
+        },
+
+        {
+          "name": "Side plank (left)",
+          "mode": "time",
+          "duration_sec": 35,
+          "description": "Straight body line."
+        },
+
+        {
+          "name": "Side plank (right)",
+          "mode": "time",
+          "duration_sec": 35,
+          "description": "Control breathing."
+        },
+
+        {
+          "name": "Glute bridge",
+          "mode": "reps",
+          "repetitions": 12,
+          "wait_for_user": true,
+          "description": "Drive through heels."
+        },
+
+        {
+          "name": "Bird dog",
+          "mode": "reps",
+          "repetitions": 10,
+          "wait_for_user": true,
+          "description": "Pause briefly."
+        }
+
+      ]
+    },
+
+    {
+      "name": "Final stretching",
+      "type": "sequence",
+      "exercises": [
+
+        {
+          "name": "Hip flexor stretch (left)",
+          "mode": "time",
+          "duration_sec": 30,
+          "description": "Posterior pelvic tilt."
+        },
+
+        {
+          "name": "Hip flexor stretch (right)",
+          "mode": "time",
+          "duration_sec": 30,
+          "description": "Relax shoulders."
+        },
+
+        {
+          "name": "Figure-4 glute stretch (left)",
+          "mode": "time",
+          "duration_sec": 30,
+          "description": "Gentle pull."
+        },
+
+        {
+          "name": "Figure-4 glute stretch (right)",
+          "mode": "time",
+          "duration_sec": 30,
+          "description": "Slow breathing."
+        },
+
+        {
+          "name": "Side body stretch (left)",
+          "mode": "time",
+          "duration_sec": 25,
+          "description": "Reach upward."
+        },
+
+        {
+          "name": "Side body stretch (right)",
+          "mode": "time",
+          "duration_sec": 25,
+          "description": "Expand ribs."
+        },
+
+        {
+          "name": "Child pose",
+          "mode": "time",
+          "duration_sec": 40,
+          "description": "Relax trunk."
+        },
+
+        {
+          "name": "Supine spinal twist (left)",
+          "mode": "time",
+          "duration_sec": 30,
+          "description": "Release abdomen."
+        },
+
+        {
+          "name": "Supine spinal twist (right)",
+          "mode": "time",
+          "duration_sec": 30,
+          "description": "Heavy shoulders."
+        }
+
+      ]
+    }
+
+  ]
+}

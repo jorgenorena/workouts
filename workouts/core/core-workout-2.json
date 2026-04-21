@@ -1,0 +1,213 @@
+{
+  "name": "Core + Light Calisthenics V2",
+  "total_rounds": 1,
+  "sound": true,
+  "keep_screen_on": true,
+
+  "sections": [
+
+    {
+      "name": "Warmup",
+      "type": "sequence",
+      "exercises": [
+
+        {
+          "name": "Marching in place with arm swing",
+          "mode": "time",
+          "duration_sec": 70,
+          "description": "Increase rhythm gradually."
+        },
+
+        {
+          "name": "Hip circles + weight shift",
+          "mode": "time",
+          "duration_sec": 50,
+          "description": "Feel balance from one leg to the other."
+        },
+
+        {
+          "name": "Deep bodyweight squats (warmup)",
+          "mode": "reps",
+          "repetitions": 14,
+          "wait_for_user": true,
+          "description": "Pause briefly at bottom."
+        },
+
+        {
+          "name": "Thoracic rotations",
+          "mode": "time",
+          "duration_sec": 45,
+          "description": "Rotate gently. Keep hips stable."
+        }
+
+      ]
+    },
+
+    {
+      "name": "Light calisthenics",
+      "type": "circuit",
+      "rounds": 3,
+      "rest_between_exercises_sec": 30,
+      "rest_between_rounds_sec": 75,
+
+      "exercises": [
+
+        {
+          "name": "Bodyweight squats",
+          "mode": "reps",
+          "repetitions": 18,
+          "wait_for_user": true,
+          "description": "Controlled descent (3 sec)."
+        },
+
+        {
+          "name": "Split squat (left)",
+          "mode": "reps",
+          "repetitions": 10,
+          "wait_for_user": true,
+          "description": "Front knee tracks forward."
+        },
+
+        {
+          "name": "Split squat (right)",
+          "mode": "reps",
+          "repetitions": 10,
+          "wait_for_user": true,
+          "description": "Stay upright."
+        },
+
+        {
+          "name": "Band rows",
+          "mode": "reps",
+          "repetitions": 14,
+          "wait_for_user": true,
+          "description": "Slow return phase."
+        }
+
+      ]
+    },
+
+    {
+      "name": "Core block",
+      "type": "circuit",
+      "rounds": 4,
+      "rest_between_exercises_sec": 20,
+      "rest_between_rounds_sec": 60,
+
+      "exercises": [
+
+        {
+          "name": "Dead bugs",
+          "mode": "reps",
+          "repetitions": 10,
+          "wait_for_user": true,
+          "description": "Extend longer. Maintain tension."
+        },
+
+        {
+          "name": "Side plank (left)",
+          "mode": "time",
+          "duration_sec": 40,
+          "description": "Actively push ground away."
+        },
+
+        {
+          "name": "Side plank (right)",
+          "mode": "time",
+          "duration_sec": 40,
+          "description": "No hip sag."
+        },
+
+        {
+          "name": "Glute bridge single-leg (left)",
+          "mode": "reps",
+          "repetitions": 10,
+          "wait_for_user": true,
+          "description": "Pelvis stays level."
+        },
+
+        {
+          "name": "Glute bridge single-leg (right)",
+          "mode": "reps",
+          "repetitions": 10,
+          "wait_for_user": true,
+          "description": "Full extension."
+        },
+
+        {
+          "name": "Bird dog",
+          "mode": "reps",
+          "repetitions": 12,
+          "wait_for_user": true,
+          "description": "Pause at full reach."
+        },
+
+        {
+          "name": "Frontal plank",
+          "mode": "time",
+          "duration_sec": 45,
+          "description": "Brace harder than V1."
+        }
+
+      ]
+    },
+
+    {
+      "name": "Final stretching",
+      "type": "sequence",
+      "exercises": [
+
+        {
+          "name": "Hip flexor stretch (left)",
+          "mode": "time",
+          "duration_sec": 30,
+          "description": "Posterior tilt."
+        },
+
+        {
+          "name": "Hip flexor stretch (right)",
+          "mode": "time",
+          "duration_sec": 30,
+          "description": "Relax neck."
+        },
+
+        {
+          "name": "Figure-4 stretch (left)",
+          "mode": "time",
+          "duration_sec": 30,
+          "description": "Gentle pull."
+        },
+
+        {
+          "name": "Figure-4 stretch (right)",
+          "mode": "time",
+          "duration_sec": 30,
+          "description": "Slow breathing."
+        },
+
+        {
+          "name": "Child pose",
+          "mode": "time",
+          "duration_sec": 40,
+          "description": "Let trunk relax."
+        },
+
+        {
+          "name": "Supine twist (left)",
+          "mode": "time",
+          "duration_sec": 30,
+          "description": "Release core."
+        },
+
+        {
+          "name": "Supine twist (right)",
+          "mode": "time",
+          "duration_sec": 30,
+          "description": "Heavy shoulders."
+        }
+
+      ]
+    }
+
+  ]
+}
