@@ -184,6 +184,65 @@ select {
   font-size: 0.95rem;
 }
 
+.runtime-step-list {
+  display: grid;
+  gap: 0.75rem;
+  padding-left: 0;
+  list-style: none;
+}
+
+.runtime-step-item {
+  padding: 0.85rem 0.95rem;
+  border: 3px solid var(--border);
+  border-radius: 1rem;
+  background: #ffffff;
+}
+
+.runtime-step-header {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+
+.runtime-step-meta {
+  margin-top: 0.35rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.runtime-step-body {
+  margin-top: 0.45rem;
+  font-size: 0.98rem;
+}
+
+.step-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0.15rem 0.7rem;
+  border: 2px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.step-badge-timed {
+  background: #dff2ff;
+}
+
+.step-badge-manual {
+  background: #e7f9d9;
+}
+
+.step-badge-rest {
+  background: #ffe7b8;
+}
+
+.step-badge-prepare {
+  background: #ffd8ef;
+}
+
 @media (min-width: 800px) {
   .panes {
     grid-template-columns: minmax(18rem, 24rem) minmax(0, 1fr);

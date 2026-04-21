@@ -6,6 +6,12 @@ import {
   normalizeWorkoutDocument,
   summarizeNormalizedWorkout,
 } from "/app/data/normalize-workout.mjs";
+import {
+  buildContextText,
+  expandWorkout,
+  formatClockTime,
+  summarizeRuntimeSteps,
+} from "/app/state/timer-engine.mjs";
 
 const state = {
   selectedPath: null,
@@ -15,6 +21,7 @@ const state = {
 const elements = {
   rawJson: document.querySelector("#raw-json"),
   reloadButton: document.querySelector("#reload-button"),
+  runtimeStepList: document.querySelector("#runtime-step-list"),
   sectionList: document.querySelector("#section-list"),
   status: document.querySelector("#status"),
   summaryGrid: document.querySelector("#summary-grid"),
@@ -71,9 +78,17 @@ async function loadWorkout(workoutPath) {
     const normalizedWorkout = normalizeWorkoutDocument(rawWorkout, {
       sourcePath: metadata?.relativePath ?? null,
     });
-    const summary = summarizeNormalizedWorkout(normalizedWorkout);
+    const normalizedSummary = summarizeNormalizedWorkout(normalizedWorkout);
+    const runtimeSteps = expandWorkout(normalizedWorkout);
+    const runtimeSummary = summarizeRuntimeSteps(runtimeSteps);
 
-    renderWorkoutSummary(metadata, summary, normalizedWorkout);
+    renderWorkoutSummary(
+      metadata,
+      normalizedSummary,
+      normalizedWorkout,
+      runtimeSteps,
+      runtimeSummary
+    );
     setStatus(`Loaded ${normalizedWorkout.name}.`, "success");
   } catch (error) {
     renderEmptyState("Could not load this workout.");
@@ -110,19 +125,32 @@ function renderWorkoutList() {
   }
 }
 
-function renderWorkoutSummary(metadata, summary, normalizedWorkout) {
+function renderWorkoutSummary(
+  metadata,
+  normalizedSummary,
+  normalizedWorkout,
+  runtimeSteps,
+  runtimeSummary
+) {
   elements.summaryName.textContent = normalizedWorkout.name;
   renderSummaryGrid([
     ["Source file", metadata?.relativePath ?? "Unknown"],
-    ["Source format", summary.sourceFormat],
-    ["Workout rounds", String(summary.totalRounds)],
-    ["Sections", String(summary.sections)],
-    ["Exercises", String(summary.exercises)],
+    ["Source format", normalizedSummary.sourceFormat],
+    ["Workout rounds", String(normalizedSummary.totalRounds)],
+    ["Sections", String(normalizedSummary.sections)],
+    ["Exercises", String(normalizedSummary.exercises)],
+    ["Runtime steps", String(runtimeSummary.totalSteps)],
+    ["Timed steps", String(runtimeSummary.timedSteps)],
+    ["Manual steps", String(runtimeSummary.manualSteps)],
+    ["Rest steps", String(runtimeSummary.restSteps)],
+    ["Prepare steps", String(runtimeSummary.prepareSteps)],
+    ["Timed duration", formatClockTime(runtimeSummary.totalTimedSeconds)],
     ["Sound enabled", normalizedWorkout.soundEnabled ? "Yes" : "No"],
     ["Keep screen on", normalizedWorkout.keepScreenOn ? "Yes" : "No"],
   ]);
   renderSectionList(normalizedWorkout.sections);
-  elements.rawJson.textContent = JSON.stringify(normalizedWorkout, null, 2);
+  renderRuntimeStepList(runtimeSteps);
+  elements.rawJson.textContent = JSON.stringify(runtimeSteps, null, 2);
 }
 
 function renderSummaryGrid(entries) {
@@ -158,10 +186,48 @@ function renderSectionList(sections) {
   }
 }
 
+function renderRuntimeStepList(runtimeSteps) {
+  elements.runtimeStepList.replaceChildren();
+
+  for (const step of runtimeSteps) {
+    const item = document.createElement("li");
+    item.className = "runtime-step-item";
+
+    const header = document.createElement("div");
+    header.className = "runtime-step-header";
+
+    const badge = document.createElement("span");
+    badge.className = `step-badge step-badge-${getStepTone(step)}`;
+    badge.textContent = getStepLabel(step);
+
+    const title = document.createElement("strong");
+    title.textContent = `${step.stepIndex}. ${step.title}`;
+
+    header.append(badge, title);
+
+    const meta = document.createElement("div");
+    meta.className = "runtime-step-meta";
+    meta.textContent = getRuntimeMeta(step);
+
+    const bodyLines = [step.detail, buildContextText(step)].filter(Boolean);
+    const body = document.createElement("div");
+    body.className = "runtime-step-body";
+    body.textContent = bodyLines.join(" | ");
+
+    item.append(header, meta);
+    if (body.textContent) {
+      item.append(body);
+    }
+
+    elements.runtimeStepList.append(item);
+  }
+}
+
 function renderEmptyState(message) {
   elements.summaryName.textContent = message;
   elements.summaryGrid.replaceChildren();
   elements.sectionList.replaceChildren();
+  elements.runtimeStepList.replaceChildren();
   elements.rawJson.textContent = message;
 }
 
@@ -172,4 +238,48 @@ function setStatus(message, tone) {
 
 function toMessage(error) {
   return error instanceof Error ? error.message : "Unexpected error.";
+}
+
+function getRuntimeMeta(step) {
+  const parts = [];
+
+  if (step.type === "timed" && step.seconds != null) {
+    parts.push(`Duration ${formatClockTime(step.seconds)}`);
+  } else {
+    parts.push("Manual completion");
+  }
+
+  if (step.sectionName) {
+    parts.push(step.sectionName);
+  }
+
+  if (step.roundTotal > 1) {
+    parts.push(`Round ${step.roundIndex}/${step.roundTotal}`);
+  }
+
+  return parts.join(" - ");
+}
+
+function getStepTone(step) {
+  if (step.isPrepare) {
+    return "prepare";
+  }
+
+  if (step.isRest) {
+    return "rest";
+  }
+
+  return step.type === "timed" ? "timed" : "manual";
+}
+
+function getStepLabel(step) {
+  if (step.isPrepare) {
+    return "Prepare";
+  }
+
+  if (step.isRest) {
+    return "Rest";
+  }
+
+  return step.type === "timed" ? "Timed" : "Manual";
 }

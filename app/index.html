@@ -10,10 +10,10 @@
     <main class="page">
       <header class="page-header">
         <p class="eyebrow">Workout app rewrite</p>
-        <h1>Phase 2 localhost proof</h1>
+        <h1>Phase 3 workout engine proof</h1>
         <p class="intro">
-          This is the smallest working browser version: it lists local workout files,
-          loads one over localhost, and normalizes it in JavaScript.
+          This version lists local workout files, loads one over localhost, normalizes it,
+          and expands it into the flat runtime step sequence the future phone UI will use.
         </p>
       </header>
 
@@ -32,11 +32,14 @@
           <h2 id="summary-name">No workout loaded</h2>
           <dl id="summary-grid" class="summary-grid"></dl>
 
-          <h3>Sections</h3>
+          <h3>Normalized sections</h3>
           <ol id="section-list" class="section-list"></ol>
 
-          <h3>Normalized JSON</h3>
-          <pre id="raw-json" class="json-output">Select a workout to inspect its normalized shape.</pre>
+          <h3>Expanded runtime steps</h3>
+          <ol id="runtime-step-list" class="runtime-step-list"></ol>
+
+          <h3>Expanded runtime JSON</h3>
+          <pre id="raw-json" class="json-output">Select a workout to inspect its expanded runtime steps.</pre>
         </section>
       </div>
     </main>
