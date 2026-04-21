@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "expand": "node tools/expand-workouts.mjs",
     "start": "node server.js",
     "validate": "node tools/validate-workouts.mjs"
   }

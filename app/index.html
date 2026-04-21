@@ -3,47 +3,12 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>Workout app - phase 2</title>
+    <meta name="theme-color" content="#fff6c2">
+    <title>Workout app</title>
     <link rel="stylesheet" href="/app/styles.css">
   </head>
   <body>
-    <main class="page">
-      <header class="page-header">
-        <p class="eyebrow">Workout app rewrite</p>
-        <h1>Phase 3 workout engine proof</h1>
-        <p class="intro">
-          This version lists local workout files, loads one over localhost, normalizes it,
-          and expands it into the flat runtime step sequence the future phone UI will use.
-        </p>
-      </header>
-
-      <p id="status" class="status status-info">Loading workouts...</p>
-
-      <div class="panes">
-        <section class="panel">
-          <div class="panel-header">
-            <h2>Available workouts</h2>
-            <button id="reload-button" class="secondary-button" type="button">Reload list</button>
-          </div>
-          <div id="workout-list" class="workout-list"></div>
-        </section>
-
-        <section class="panel">
-          <h2 id="summary-name">No workout loaded</h2>
-          <dl id="summary-grid" class="summary-grid"></dl>
-
-          <h3>Normalized sections</h3>
-          <ol id="section-list" class="section-list"></ol>
-
-          <h3>Expanded runtime steps</h3>
-          <ol id="runtime-step-list" class="runtime-step-list"></ol>
-
-          <h3>Expanded runtime JSON</h3>
-          <pre id="raw-json" class="json-output">Select a workout to inspect its expanded runtime steps.</pre>
-        </section>
-      </div>
-    </main>
-
+    <div id="app"></div>
     <script type="module" src="/app/main.js"></script>
   </body>
 </html>

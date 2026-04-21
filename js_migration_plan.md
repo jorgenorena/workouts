@@ -306,9 +306,7 @@ After phase 2, you can now:
 4. fetch a workout JSON file
 5. normalize it in JavaScript without touching Python
 
-## Phase 3 detail: port the workout engine
-
-This is the next implementation step.
+## Phase 3 status: achieved
 
 ### Goal
 
@@ -371,10 +369,202 @@ Manual steps should omit `seconds` or set it to `null`.
 - no audio/vibration polish yet
 - no PWA work
 
-### Expected result of phase 3
+### What was achieved
 
-At the end of phase 3, the repo should have a JavaScript workout engine that can fully replace the Python app's data-processing logic. The next phase can then focus on building the real phone-first player UI on top of that engine instead of mixing business logic with rendering.
+1. Added `app/state/timer-engine.mjs`.
+2. Ported the core Python workout expansion behavior into pure JavaScript:
+   - full workout rounds
+   - section rounds
+   - circuit rest between exercises
+   - circuit rest between rounds
+   - between-section rest
+   - prepare steps before eligible exercises
+3. Kept the engine DOM-free and deterministic:
+   - no browser APIs
+   - no timers
+   - no rendering logic
+4. Added useful engine exports for the next UI phase:
+   - `expandWorkout(...)`
+   - `summarizeRuntimeSteps(...)`
+   - `buildContextText(...)`
+   - `formatClockTime(...)`
+5. Added `tools/expand-workouts.mjs`.
+6. Added `npm run expand` to inspect all current workout files through the new engine.
+7. Updated the phase proof page so it now shows:
+   - runtime step counts
+   - timed/manual/rest/prepare counts
+   - total timed duration
+   - expanded runtime step list
+   - expanded runtime JSON
+8. Verified the engine against all current workout files successfully.
+
+### Result at the end of phase 3
+
+At the end of phase 3, the repo now has a JavaScript workout engine that replaces the Python app's data-processing layer. The next phase can focus on building the real phone-first workout UI on top of this engine instead of mixing expansion logic with rendering.
+
+## Phase 4 status: achieved
+
+### Goal
+
+Turn the current inspection page into the first real workout player UI for Android phone use.
+
+### Scope
+
+1. Replace the current developer-focused proof layout with a simple mobile flow:
+   - workout picker
+   - workout player
+   - completion state
+2. Add `app/state/app-state.mjs` to track:
+   - selected workout
+   - expanded runtime steps
+   - current step index
+   - paused/running state
+   - remaining seconds for timed steps
+3. Use `expandWorkout(...)` from `app/state/timer-engine.mjs` as the only source of workout steps.
+4. Build a real player screen with:
+   - workout name
+   - progress
+   - current step title
+   - detail/context text
+   - large timer or large manual-complete prompt
+   - up-next preview
+5. Add the minimum useful controls:
+   - start
+   - pause/resume
+   - next/skip
+   - complete manual step
+   - quit back to picker
+6. Apply the intended visual direction:
+   - bright background
+   - large dark text
+   - high contrast
+   - large tap targets
+   - bottom-anchored actions where helpful
+7. Keep the UI framework-free and local-first.
+
+### Recommended file additions for phase 4
+
+- `app/state/app-state.mjs`
+- `app/ui/workout-list.mjs`
+- `app/ui/workout-player.mjs`
+- `app/ui/controls.mjs`
+
+### Non-goals for phase 4
+
+- no wake lock yet
+- no audio/vibration polish yet
+- no install/PWA work yet
+- no workout editing UI
+
+### What was achieved
+
+1. Replaced the developer inspection page with a real application flow:
+   - workout picker
+   - ready screen
+   - workout player
+   - completion screen
+2. Added `app/state/app-state.mjs` to manage:
+   - workout selection
+   - runtime step session state
+   - current step index
+   - running/paused/ready/complete state
+   - timed-step countdown state
+3. Added UI modules:
+   - `app/ui/dom-helpers.mjs`
+   - `app/ui/workout-list.mjs`
+   - `app/ui/workout-player.mjs`
+   - `app/ui/controls.mjs`
+4. Reworked `app/main.js` so the UI is now driven by app state instead of a static inspection layout.
+5. Reworked `app/index.html` and `app/styles.css` for a mobile-first responsive layout:
+   - bright background
+   - large dark text
+   - large tap targets
+   - sticky bottom action bar
+   - simple responsive behavior for desktop browsers
+6. Added usable player controls:
+   - start workout
+   - pause/resume timed steps
+   - skip step
+   - complete manual step
+   - quit back to workout picker
+   - run again after completion
+7. Kept the player behavior grounded in the JS engine from phase 3.
+8. Updated `usage.md` for the current player stage.
+
+### Result at the end of phase 4
+
+At the end of phase 4, the app is now a usable local browser-based workout runner. It is still missing some workout-specific polish, but the core interaction loop exists: pick a workout, start it, move through steps, and finish it on the phone with touch-friendly controls.
+
+## Phase 5 detail: add workout-useful polish
+
+This is the next implementation step.
+
+### Goal
+
+Add the practical features that make the player more reliable during real workouts without turning the app into a heavier system.
+
+### Scope
+
+1. Add wake-lock support in a small browser utility such as `app/utils/wake-lock.mjs`.
+2. Request wake lock only during active workouts.
+3. Release wake lock when the workout ends or the user exits.
+4. Re-request wake lock after visibility changes when possible.
+5. Add simple feedback cues:
+   - browser audio alerts where supported
+   - optional vibration cues where supported
+6. Add small local preferences using `localStorage`, for example:
+   - last opened workout
+   - sound enabled/disabled
+   - maybe a simple resume preference if it stays lightweight
+7. Consider one or two practical timer controls only if they clearly help real usage:
+   - optional skip remains
+   - optional `+15s` / `-15s` can be considered, but only if it improves actual workout handling
+
+### Non-goals for phase 5
+
+- no cloud sync
+- no accounts
+- no database
+- no workout editor
+- no heavy settings UI
+
+### Expected result of phase 5
+
+At the end of phase 5, the app should feel more trustworthy during an actual workout session: harder to let the screen sleep, clearer about state changes, and slightly more forgiving in real-world use.
+
+## Phase 6 detail: document runtime and retire Python as the default app
+
+This is the final implementation/documentation step.
+
+### Goal
+
+Make the JavaScript app the clearly documented default way to run the project and explain the important design choices.
+
+### Scope
+
+1. Update the main human-facing markdown documentation, most likely `README.md`.
+2. Explain:
+   - why the app moved from Python to JavaScript
+   - how to run it from Termux with Node.js on Android
+   - whether and how it works in a desktop browser
+   - what the preferred workout JSON schema is
+   - what legacy JSON compatibility still exists
+3. Point to:
+   - `workout_json_format.md`
+   - `usage.md`
+4. Make it explicit that Python is no longer the preferred runtime.
+5. Decide whether `workout_timer.py` should remain only as legacy reference or be clearly marked as superseded.
+
+### Non-goals for phase 6
+
+- no enterprise deployment documentation
+- no cloud hosting guidance
+- no multi-user setup
+
+### Expected result of phase 6
+
+At the end of phase 6, a single person should be able to clone the repo, run the JS app locally from Termux, understand the workout JSON authoring format, and ignore the old Python runtime unless they intentionally want it for reference.
 
 ## First implementation priority from here
 
-Build `app/state/timer-engine.mjs` and port the Python expansion rules first. That is the clean handoff point between the data layer already done in phases 1 and 2 and the real mobile player UI that should follow.
+Add wake lock and lightweight feedback next. The player loop now exists, so the next meaningful jump is making it more reliable during real workout use rather than making it architecturally fancier.
