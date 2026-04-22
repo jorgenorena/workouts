@@ -1,10 +1,10 @@
 # Usage
 
-This file explains how to run and test the app at the current **phase 4** stage.
+This file explains how to run and test the app at the current **phase 6** stage.
 
 ## What exists right now
 
-At this stage, the app is a first usable browser-based workout runner.
+At this stage, the app is a usable browser-based workout runner with the JS migration completed.
 
 What it does already:
 
@@ -16,13 +16,13 @@ What it does already:
 - opens a real workout player screen
 - runs timed steps automatically
 - supports manual step completion
-- shows progress, current step, and up-next information
+- keeps the screen awake during active workout use when the browser supports wake lock
+- vibrates on workout step transitions when the browser and device support vibration
+- uses a very minimal live workout screen while a workout is running
 - shows a completion screen at the end
 
 What it does **not** do yet:
 
-- keep the screen awake during workouts
-- play polished audio/vibration cues
 - provide final install/PWA polish
 
 ## Prerequisite
@@ -74,7 +74,13 @@ http://127.0.0.1:3000
 
 The UI is built mobile-first, but it should still work decently in a desktop browser.
 
-## How to test phase 4 in the browser
+## Behavior notes
+
+- Wake lock support depends on the browser. On supported Android browsers, the app will try to keep the screen awake while you are inside an active workout session.
+- Vibration support also depends on the browser and device. On supported phones, the app will vibrate at workout step transitions.
+- The live workout screen is intentionally minimal: **exercise name, timer or repetitions, and buttons**.
+
+## How to test the current app in the browser
 
 1. Open the app in the browser.
 2. Confirm the workout picker shows the available workout files as large cards.
@@ -88,20 +94,20 @@ The UI is built mobile-first, but it should still work decently in a desktop bro
 6. Confirm the player screen shows:
    - current step title
    - large timer for timed steps or large manual prompt
-   - progress bar
-   - upcoming step preview
    - large bottom controls
-7. For a timed step, test:
+7. While the workout is active, confirm the screen stays awake if your browser supports wake lock.
+8. At step transitions, confirm the phone vibrates if your browser and phone support vibration.
+9. For a timed step, test:
    - **Pause**
    - **Resume**
    - **Skip**
-8. For a manual step, test:
-   - **Done**
-   - **Skip**
-9. Finish a workout and confirm the completion screen appears.
-10. Test:
-   - **Run again**
-   - **Back to workouts**
+10. For a manual step, test:
+    - **Done**
+    - **Skip**
+11. Finish a workout and confirm the completion screen appears.
+12. Test:
+    - **Run again**
+    - **Back to workouts**
 
 ## Good workouts to test
 

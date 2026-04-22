@@ -495,9 +495,7 @@ Turn the current inspection page into the first real workout player UI for Andro
 
 At the end of phase 4, the app is now a usable local browser-based workout runner. It is still missing some workout-specific polish, but the core interaction loop exists: pick a workout, start it, move through steps, and finish it on the phone with touch-friendly controls.
 
-## Phase 5 detail: add workout-useful polish
-
-This is the next implementation step.
+## Phase 5 status: achieved
 
 ### Goal
 
@@ -528,13 +526,26 @@ Add the practical features that make the player more reliable during real workou
 - no workout editor
 - no heavy settings UI
 
-### Expected result of phase 5
+### What was achieved
 
-At the end of phase 5, the app should feel more trustworthy during an actual workout session: harder to let the screen sleep, clearer about state changes, and slightly more forgiving in real-world use.
+1. Added `app/utils/wake-lock.mjs`.
+2. Integrated wake-lock behavior into the main browser app flow.
+3. The app now tries to hold a screen wake lock while a workout session is active on the player screen.
+4. Wake lock is released when leaving the workout session and re-requested after visibility changes when supported.
+5. Added `app/utils/feedback.mjs`.
+6. The app now triggers phone vibration on workout step transitions when the browser and device support vibration.
+7. Kept these device features outside the workout engine so the engine remains DOM-free and deterministic.
+8. Simplified the active workout screen further so real workout use is less cluttered:
+   - no workout title while running
+   - no extra summary boxes while running
+   - no upcoming-steps panel while running
+   - only exercise name, timer/repetitions, and buttons during active use
 
-## Phase 6 detail: document runtime and retire Python as the default app
+### Result at the end of phase 5
 
-This is the final implementation/documentation step.
+At the end of phase 5, the app is more practical during real workouts: the screen is less likely to sleep on supported browsers, the phone can vibrate at step transitions, and the running UI is more focused and less visually busy.
+
+## Phase 6 status: achieved
 
 ### Goal
 
@@ -561,10 +572,27 @@ Make the JavaScript app the clearly documented default way to run the project an
 - no cloud hosting guidance
 - no multi-user setup
 
-### Expected result of phase 6
+### What was achieved
 
-At the end of phase 6, a single person should be able to clone the repo, run the JS app locally from Termux, understand the workout JSON authoring format, and ignore the old Python runtime unless they intentionally want it for reference.
+1. Replaced the empty `README.md` with JS-first runtime documentation.
+2. Documented how to run the app from Termux with Node.js on Android.
+3. Documented desktop browser support.
+4. Pointed the repo documentation at:
+   - `usage.md`
+   - `workout_json_format.md`
+5. Removed the old Python runtime files and artifacts from the repo:
+   - `workout_timer.py`
+   - `pyproject.toml`
+   - `.python-version`
+   - `uv.lock`
+   - `__pycache__/`
+   - `.venv/`
+6. Updated `usage.md` to describe the current JS-only app behavior, including wake lock, vibration, and the simplified running UI.
+
+### Result at the end of phase 6
+
+At the end of phase 6, the repository is clearly centered on the JavaScript app. A single person can run it locally from Termux with Node.js, understand the workout JSON authoring format, and use the app without needing any Python runtime.
 
 ## First implementation priority from here
 
-Add wake lock and lightweight feedback next. The player loop now exists, so the next meaningful jump is making it more reliable during real workout use rather than making it architecturally fancier.
+The migration plan is now functionally complete. Any next work should be product polish: better aesthetics, optional install/PWA improvements, and small UX refinements only if they clearly help real workout use.

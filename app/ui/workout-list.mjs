@@ -2,7 +2,7 @@ import { createButton, createElement, createStatusBanner } from "/app/ui/dom-hel
 
 export function renderWorkoutListScreen({ actions, state }) {
   const screen = createElement("main", { className: "screen" });
-  const header = createElement("header", { className: "screen-header panel hero-panel" });
+  const header = createElement("header", { className: "screen-header" });
   const eyebrow = createElement("p", {
     className: "eyebrow",
     text: "Workout app",
