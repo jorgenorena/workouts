@@ -137,7 +137,17 @@ function renderActivePlayerCard(session) {
         : `${step.repetitions ?? ""} reps`,
   });
 
-  card.prepend(title, display);
+  card.append(title, display);
+
+  if (step.isPrepare && step.detail) {
+    card.append(
+      createElement("p", {
+        className: "step-note step-note-prepare",
+        text: step.detail,
+      })
+    );
+  }
+
   return card;
 }
 

@@ -263,8 +263,8 @@ function addPrepareSteps(runtimeSteps) {
       expandedSteps.push(
         makeRestStep({
           title: "Prepare",
-          seconds: 2,
-          detail: `Get ready for: ${step.title}`,
+          seconds: 3,
+          detail: `Prepare for ${step.title}`,
           sectionName: step.sectionName,
           roundIndex: step.roundIndex,
           roundTotal: step.roundTotal,
